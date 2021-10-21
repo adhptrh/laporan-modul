@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Slider</title>
+    <style>
+        .box {
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            display:flex;
+            padding:100px;
+        }
+        .range {
+            width: 100%;
+        }
+        .container {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            rgb(255,255,255)
+        </div>
+        <input class="range" id="r" min="0" max="255" value="255" type="range">
+        <input class="range" id="g" min="0" max="255" value="255" type="range">
+        <input class="range" id="b" min="0" max="255" value="255" type="range">
+    </div>
+
+    <script>
+        // Mengambil 1 element class yang bernama box
+        let box = document.getElementsByClassName("box")[0]
+        // Mengambil semua element class yang bernama range
+        let ranges = document.getElementsByClassName("range")
+        // Variabel untuk mendeteksi mouse sedang dipencet
+        let mousedown = false
+        // Variabel untuk value warna yang nanti diubah dengan input range
+        let rgb = {
+            "r":255,
+            "g":255,
+            "b":255
+        }
+
+        // Mengiterasi semua range dengan fungsi yang sama
+        Object.values(ranges).forEach((range)=>{
+
+            // Mengset mousedown ke true jika range dipencet
+            range.onmousedown = ()=>{
+                mousedown = true
+            }
+
+            // Mengset mousedown ke false jika range tidak dipencet
+            range.onmouseup = ()=>{
+                mousedown = false
+            }
+
+            // Mengset fungsi untuk input range jika mouse sedang bergerak
+            range.onmousemove = ()=>{
+                // Jika mousedown nya true (jika range di pencet)
+                if (mousedown) {
+                    // Mengubah variabel rgb ke value range yang sedang dipencet
+                    rgb[range.id] = range.value
+                    // Mengset innerHTML dan background color ke elemen box
+                    box.innerHTML = `rgb(${rgb.r},${rgb.g},${rgb.b})`
+                    box.style.backgroundColor = box.innerHTML
+                }
+            }
+        })
+    </script>
+</body>
+</html>
