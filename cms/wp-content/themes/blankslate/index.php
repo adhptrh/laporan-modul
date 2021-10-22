@@ -8,7 +8,7 @@
             <div style="box-shadow: 0px 0px 7px gray;max-width:300px;">
                 <img src="<?php the_post_thumbnail_url() ?>" width="100%">
                 <div style="padding:20px;">
-                    <p style="font-weight:bold;"><?php the_title() ?></p>
+                    <a href="<?php the_permalink() ?>" style="font-weight:bold;"><?php the_title() ?></a>
                     <p><?php the_excerpt() ?></p>
                 </div>
             </div>
