@@ -1,4 +1,41 @@
 <?php
+
+register_setting("setting","instagram");
+register_setting("setting","twitter");
+
+function htmladmin() {
+    ?>
+    <?php settings_errors() ?>
+        <form method="post" action="options.php">
+            <?php settings_fields("setting") ?>
+            <?php do_settings_sections("COVID19") ?>
+            <?php submit_button(); ?>
+        </form>
+    <?php
+}
+
+add_menu_page("COVID19","COVID19","manage_options","covid19","htmladmin");
+
+function setting_sect() {
+    echo "Add Footer Link";
+}
+
+function setting_field_instagram() {
+    echo "<input name='instagram' value='".get_option("instagram","#")."'>";
+}
+
+function setting_field_twitter() {
+    echo "<input name='twitter' value='".get_option("twitter","#")."'>";
+}
+
+function init() {
+    add_settings_section("id1","Footer Links","setting_sect","COVID19");
+    add_settings_field("field1","Instagram", "setting_field_instagram","COVID19","id1");
+    add_settings_field("field2","Twitter", "setting_field_twitter","COVID19","id1");
+}
+
+add_action("admin_init","init");
+
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup() {
 load_theme_textdomain( 'blankslate', get_template_directory() . '/languages' );
@@ -27,6 +64,7 @@ add_action( 'wp_enqueue_scripts', 'blankslate_enqueue' );
 function blankslate_enqueue() {
 wp_enqueue_style( 'blankslate-style', get_stylesheet_uri() );
 wp_enqueue_script( 'jquery' );
+wp_enqueue_script("appjs",get_template_directory_uri()."/app.js",array(),false,true);
 }
 add_action( 'wp_footer', 'blankslate_footer' );
 function blankslate_footer() {
