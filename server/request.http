@@ -1,0 +1,37 @@
+
+### Login Admin
+POST http://localhost:8000/api/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin
+&password=admin
+
+### Me
+POST http://localhost:8000/api/auth/me
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAyODgxMSwiZXhwIjoxNjM1MTE1MjExLCJuYmYiOjE2MzUwMjg4MTEsImp0aSI6ImhvZ1FkVVRIR1Y3akpXNGYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7mPxAXomfOzZH12_3XVuDt3oK6AoFraJydPv1jv_0is
+
+### Logout
+POST http://localhost:8000/api/auth/logout
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAyNzIzMiwiZXhwIjoxNjM1MTEzNjMyLCJuYmYiOjE2MzUwMjcyMzIsImp0aSI6IlUzT2VXTGZKQ3YzdWRnMjEiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.YUKvCgW9_mQpKDrhaaWoTl6ZRa-RGoor1a-NxvazcpY
+
+### Reset Password
+POST http://localhost:8000/api/auth/reset_password
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAyNzk5NywiZXhwIjoxNjM1MTE0Mzk3LCJuYmYiOjE2MzUwMjc5OTcsImp0aSI6ImZNbzIwb3doaHV0Mmtia2IiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.2g_pqt6QbmxXTBRd4bazd6aWUayNG14lg3D-uxepGAc
+Content-Type: application/x-www-form-urlencoded
+
+new_password=admin123
+&old_password=admin
+
+### Create Poll
+POST http://localhost:8000/api/poll
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAzMTM3MCwiZXhwIjoxNjM1MTE3NzcwLCJuYmYiOjE2MzUwMzEzNzAsImp0aSI6IkZzUDVDTkFpWkxpUTFUYkciLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.t9EGc6wD3nwlRDg-arI5pcY-TonsAHSfxUiQLPPK1Kk
+Content-Type: application/x-www-form-urlencoded
+
+title=sdawew
+&description=wudsdwhu
+&deadline=2025-08-08 12:00:00
+&choices[]=wadosaw
+&choices[]=wados
+
+### Get Poll
+get http://localhost:8000/api/poll/1
