@@ -53,6 +53,7 @@ Route::group([
 
     });
 
+    Route::get("", [PollController::class,"get"]);
     Route::get("{poll_id}", [PollController::class,"show"]);
 
 });

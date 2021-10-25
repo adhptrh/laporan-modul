@@ -60,12 +60,15 @@ class PollController extends Controller
         $poll = Poll::find($poll_id);
         $poll->delete();
     }
+    
+    public function get()
+    {
+        return Poll::all();
+    }
 
     public function show($poll_id)
     {
         $poll = Poll::find($poll_id);
-        $poll->creator = $poll->user->username;
-        $poll->result = $poll->getResult();
         
         return $poll;
     }
