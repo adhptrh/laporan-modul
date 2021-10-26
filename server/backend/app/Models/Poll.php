@@ -33,6 +33,14 @@ class Poll extends Model
 
     public function getResultAttribute()
     {
+
+        if (auth()->user()->role == "user")
+        {
+            if ($this->deadline > date("Y-m-d H:i:s")) {
+                return null;
+            }
+        }
+
         $votes = Vote::where("poll_id", $this->id)->get();
 
         $divisions = [];
@@ -59,19 +67,19 @@ class Poll extends Model
             }
         }
 
-        foreach ($divisions as $k=>$v)
+        foreach ($divisions as $division=>$v)
         {
             $mostvoted = ["value"=>0];
-            foreach ($v as $kk=>$vv)
+            foreach ($v as $choice=>$choiceVal)
             {
-                if ($vv > $mostvoted["value"])
+                if ($choiceVal > $mostvoted["value"])
                 {
-                    $mostvoted["division"] = $k;
-                    $mostvoted["value"] = $vv;
-                    $mostvoted["choice"] = $kk;
+                    $mostvoted["division"] = $division;
+                    $mostvoted["value"] = $choiceVal;
+                    $mostvoted["choice"] = $choice;
                     $mostvoted["count"] = 1;
                 }
-                elseif ($vv == $mostvoted["value"])
+                elseif ($choiceVal == $mostvoted["value"])
                 {
                     $mostvoted["count"] += 1;
                 }
@@ -106,15 +114,13 @@ class Poll extends Model
                     $choice_id = $choice->id;
                 }
             }
-            
+            $total = ($total < 1) ? 1:$total;
             array_push($result,[
                 "choice_id"=>$choice_id,
                 "points"=>$v / ($total) * 100,
                 "choice"=>$k
             ]);
         }
-
-        
 
         return $result;
     }

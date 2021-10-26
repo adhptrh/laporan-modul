@@ -40,7 +40,10 @@ Route::group([
 });
 
 Route::group([
-    "prefix"=>"poll"
+    "prefix"=>"poll",
+    "middleware"=>[
+        OnlyAuthenticated::class
+        ]
 ], function() {
 
     Route::group([

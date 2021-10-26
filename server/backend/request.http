@@ -6,6 +6,13 @@ Content-Type: application/x-www-form-urlencoded
 username=admin
 &password=admin
 
+### Login User
+POST http://localhost:8000/api/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=it1
+&password=user
+
 ### Me
 POST http://localhost:8000/api/auth/me
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAyODgxMSwiZXhwIjoxNjM1MTE1MjExLCJuYmYiOjE2MzUwMjg4MTEsImp0aSI6ImhvZ1FkVVRIR1Y3akpXNGYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7mPxAXomfOzZH12_3XVuDt3oK6AoFraJydPv1jv_0is
@@ -24,17 +31,19 @@ new_password=admin123
 
 ### Create Poll
 POST http://localhost:8000/api/poll
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTAzMTM3MCwiZXhwIjoxNjM1MTE3NzcwLCJuYmYiOjE2MzUwMzEzNzAsImp0aSI6IkZzUDVDTkFpWkxpUTFUYkciLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.t9EGc6wD3nwlRDg-arI5pcY-TonsAHSfxUiQLPPK1Kk
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTI0NTkxNiwiZXhwIjoxNjM1MzMyMzE2LCJuYmYiOjE2MzUyNDU5MTYsImp0aSI6ImZSbnBzZUdnNElvSm11ejciLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.gBEQZJFrgaSCHtXZaEdpovJLgZuRYTmPnPK5FoibiXo
 Content-Type: application/x-www-form-urlencoded
 
-title=sdawew
-&description=wudsdwhu
-&deadline=2025-08-08 12:00:00
-&choices[]=wadosaw
-&choices[]=wados
+title=expired poll
+&description=this poll is expired
+&deadline=2019-08-08 12:00:00
+&choices[]=wadosadawdw
+&choices[]=wadosds
 
 ### Get A Poll
-get http://localhost:8000/api/poll/1
+get http://localhost:8000/api/poll/8
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTI0NTg5NCwiZXhwIjoxNjM1MzMyMjk0LCJuYmYiOjE2MzUyNDU4OTQsImp0aSI6ImNQUW1sUzhoSGN4Z1VlbksiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WuExvcKsLQ1dv5CS5yms3IqPrmje-Mk2T7qD5gn9B5M
 
 ### Get Polls
 get http://localhost:8000/api/poll/
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzNTI0NTg5NCwiZXhwIjoxNjM1MzMyMjk0LCJuYmYiOjE2MzUyNDU4OTQsImp0aSI6ImNQUW1sUzhoSGN4Z1VlbksiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WuExvcKsLQ1dv5CS5yms3IqPrmje-Mk2T7qD5gn9B5M

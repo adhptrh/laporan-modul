@@ -64,10 +64,12 @@ class PollController extends Controller
     public function get()
     {
         return Poll::all();
+
     }
 
     public function show($poll_id)
     {
+
         $poll = Poll::find($poll_id);
         
         return $poll;
